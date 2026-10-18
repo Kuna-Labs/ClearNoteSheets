@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>ClearNote Sheets — Custom sheet music, delivered fast</title>
+  <meta name="description" content="High-quality, professional sheet music customized for your needs, delivered quickly.">
+  <meta name="theme-color" content="#F5F2EC" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0F1E2A" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <!-- Sets data-theme before first paint so there's no light/dark flash -->
+  <script src="/js/theme.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap">
+  <link rel="preload" href="/assets/logo/clearnote-note-sprite.svg" as="fetch" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/glass.css">
+  <link rel="stylesheet" href="/css/site.css">
+
+  <script src="/js/crystal.js" defer></script>
+  <script src="/js/request-form.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Ambient light the glass refracts -->
+  <div class="backdrop" aria-hidden="true">
+    <div class="backdrop__blob backdrop__blob--1"></div>
+    <div class="backdrop__blob backdrop__blob--2"></div>
+    <div class="backdrop__blob backdrop__blob--3"></div>
+    <div class="backdrop__prism"></div>
+    <div class="backdrop__rays"></div>
+    <svg class="backdrop__staff" viewBox="0 0 1440 220" preserveAspectRatio="none">
+      <g fill="none" stroke="currentColor" stroke-width="1.2">
+        <path d="M0,70 C360,20 720,140 1080,70 S1440,40 1440,40"/>
+        <path d="M0,90 C360,40 720,160 1080,90 S1440,60 1440,60"/>
+        <path d="M0,110 C360,60 720,180 1080,110 S1440,80 1440,80"/>
+        <path d="M0,130 C360,80 720,200 1080,130 S1440,100 1440,100"/>
+        <path d="M0,150 C360,100 720,220 1080,150 S1440,120 1440,120"/>
+      </g>
+    </svg>
+  </div>
+
+  <header class="site-header">
+    <nav class="nav glass glass--refract" aria-label="Main">
+      <a class="brand" href="/" aria-label="ClearNote Sheets home">
+        <svg class="crystal brand__note" viewBox="0 0 200 240" aria-hidden="true"><use href="#cn-note"/></svg>
+        <span class="brand__word">ClearNote Sheets</span>
+      </a>
+      <ul class="nav__links">
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#request">Request</a></li>
+      </ul>
+      <div class="nav__actions">
+        <button class="theme-toggle glass" type="button" data-theme-toggle aria-label="Switch to dark mode">
+          <svg class="theme-toggle__moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+          <svg class="theme-toggle__sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg>
+        </button>
+        <a class="btn btn--solid nav__cta" href="#request">Get started</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="hero__copy">
+        <h1 class="hero__title">
+          <span>Custom</span>
+          <span>sheet music.</span>
+          <span>Delivered fast.</span>
+        </h1>
+        <p class="hero__lede">High-quality, professional sheet music customized for your needs, delivered quickly.</p>
+        <div class="hero__actions">
+          <a class="btn btn--solid" href="#request">Request sheet music</a>
+          <a class="btn glass glass--refract" href="#how">How it works</a>
+        </div>
+      </div>
+
+      <div class="hero__stage" aria-hidden="true">
+        <div class="hero__halo"></div>
+        <div class="hero__lens glass glass--refract"></div>
+        <div class="hero__lens hero__lens--small glass glass--refract"></div>
+        <svg class="crystal hero__note" viewBox="0 0 200 240" data-tilt><use href="#cn-note"/></svg>
+      </div>
+    </section>
+
+    <section class="section" id="how" aria-labelledby="how-title">
+      <h2 class="section__title" id="how-title">How it works</h2>
+      <ol class="steps">
+        <li class="step glass glass--refract">
+          <span class="step__n">1</span>
+          <h3 class="step__title">Send your request</h3>
+          <p>Tell us the piece, the instrument and anything we should know. Attach a recording or score if you have one.</p>
+        </li>
+        <li class="step glass glass--refract">
+          <span class="step__n">2</span>
+          <h3 class="step__title">We write your part</h3>
+          <p>Your sheet music is arranged and engraved to fit your instrument and playing level.</p>
+        </li>
+        <li class="step glass glass--refract">
+          <span class="step__n">3</span>
+          <h3 class="step__title">Get your PDF</h3>
+          <p>We email you a print-ready PDF in [YOUR TURNAROUND].</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="section" id="pricing" aria-labelledby="pricing-title">
+      <div class="pricing glass">
+        <div>
+          <h2 class="section__title" id="pricing-title">Pricing</h2>
+          <p class="muted">[YOUR PRICING — per page, per piece, or by arrangement size]</p>
+        </div>
+        <a class="btn btn--solid" href="#request">Get a quote</a>
+      </div>
+    </section>
+
+    <section class="section request" id="request" aria-labelledby="request-title">
+      <div class="request__intro">
+        <h2 class="section__title" id="request-title">Request sheet music</h2>
+        <p class="muted">We reply within [YOUR RESPONSE TIME] with a quote and delivery date.</p>
+        <div class="request__surfaces" aria-hidden="true">
+          <div class="surface" data-surface="ivory"><svg class="crystal" viewBox="0 0 200 240"><use href="#cn-note"/></svg></div>
+          <div class="surface" data-surface="mist"><svg class="crystal" viewBox="0 0 200 240"><use href="#cn-note"/></svg></div>
+          <div class="surface" data-surface="navy"><svg class="crystal" viewBox="0 0 200 240"><use href="#cn-note"/></svg></div>
+        </div>
+      </div>
+
+      <form class="request-form glass" action="/api/request" method="post" enctype="multipart/form-data" novalidate data-request-form>
+        <div class="field-row">
+          <div class="field">
+            <label for="rf-name">Your name</label>
+            <input id="rf-name" name="name" type="text" autocomplete="name" required data-missing="Add your name." maxlength="120">
+          </div>
+          <div class="field">
+            <label for="rf-email">Email</label>
+            <input id="rf-email" name="email" type="email" autocomplete="email" required data-missing="Add your email so we can reply." maxlength="200">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="rf-piece">Piece</label>
+          <input id="rf-piece" name="piece" type="text" required data-missing="Add the piece you want written." maxlength="200" placeholder="Title and composer or artist">
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="rf-instrument">Instrument or ensemble</label>
+            <input id="rf-instrument" name="instrument" type="text" required data-missing="Add the instrument or ensemble." maxlength="120" placeholder="Piano, alto sax, string quartet…">
+          </div>
+          <div class="field">
+            <label for="rf-deadline">Needed by <span class="optional">(optional)</span></label>
+            <input id="rf-deadline" name="deadline" type="date">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="rf-notes">Details <span class="optional">(optional)</span></label>
+          <textarea id="rf-notes" name="notes" rows="4" maxlength="4000" placeholder="Key, difficulty, which part of the song, anything else"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="rf-file">Reference file <span class="optional">(optional)</span></label>
+          <input id="rf-file" name="file" type="file" accept=".pdf,.mp3,.wav,.m4a,.mid,.midi,.musicxml,.mxl,.xml,.png,.jpg,.jpeg" aria-describedby="rf-file-hint">
+          <p class="hint" id="rf-file-hint">A recording, score or MIDI file. PDF, audio, MIDI, MusicXML or images, up to 20 MB.</p>
+        </div>
+
+        <!-- Honeypot: hidden from people, filled by bots -->
+        <div class="hp" aria-hidden="true">
+          <label for="rf-company">Company</label>
+          <input id="rf-company" name="company" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="request-form__footer">
+          <button class="btn btn--solid" type="submit">Send request</button>
+          <p class="form-status" role="status" aria-live="polite" data-form-status></p>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand brand--small" href="/">
+      <svg class="crystal brand__note" viewBox="0 0 200 240" aria-hidden="true"><use href="#cn-note"/></svg>
+      <span class="brand__word">ClearNote Sheets</span>
+    </a>
+    <p class="muted">© <span data-year>2026</span> ClearNote Sheets</p>
+    <a class="muted" href="mailto:[YOUR EMAIL]">[YOUR EMAIL]</a>
+  </footer>
+</body>
+</html>

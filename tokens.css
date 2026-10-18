@@ -1,0 +1,161 @@
+/* ClearNote Sheets — design tokens
+   Brand palette from the identity sheet:
+   Deep Navy #172B3B · Slate Blue #60788B · Mist Blue #B9C9D6 · Pearl Ivory #F5F2EC · Pale Silver #E2E7EB */
+
+:root {
+  --navy: #172B3B;
+  --slate: #60788B;
+  --mist: #B9C9D6;
+  --ivory: #F5F2EC;
+  --silver: #E2E7EB;
+
+  --font: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --w-light: 300;
+  --w-medium: 500;
+
+  --radius-pill: 999px;
+  --radius-lg: 32px;
+  --radius-md: 24px;
+  --radius-sm: 14px;
+
+  --ease-out: cubic-bezier(.2, .8, .2, 1);
+  --page-max: 1200px;
+}
+
+/* ---------- Light theme (default) ---------- */
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+  --bg: #F5F2EC;
+  --ink: #172B3B;
+  --muted: #4F6577;          /* slate darkened to pass 4.5:1 on ivory */
+  --btn: #4F6577;
+  --btn-ink: #FFFFFF;
+  --focus: #172B3B;
+
+  /* glass */
+  --glass: rgba(255, 255, 255, .32);
+  --glass-strong: rgba(255, 255, 255, .55);
+  --rim: rgba(255, 255, 255, .95);
+  --rim-low: rgba(255, 255, 255, .35);
+  --hair: rgba(255, 255, 255, .5);
+  --sheen: rgba(255, 255, 255, .55);
+  --shadow: rgba(23, 43, 59, .13);
+  --field: rgba(255, 255, 255, .5);
+  --field-line: rgba(23, 43, 59, .16);
+
+  /* ambient backdrop */
+  --blob-1: #B9C9D6;
+  --blob-2: #C9DBE8;
+  --blob-3: #E2E7EB;
+  --blob-opacity: .9;
+  --ray: .6;
+  --prism: .75;
+  --staff: rgba(23, 43, 59, .07);
+
+  /* crystal note: facet tones (dark → bright), back facets, lines */
+  --cn-t1: rgba(23, 43, 59, .30);
+  --cn-t2: rgba(23, 43, 59, .16);
+  --cn-t3: rgba(96, 120, 139, .10);
+  --cn-t4: rgba(255, 255, 255, .22);
+  --cn-t5: rgba(255, 255, 255, .45);
+  --cn-t6: rgba(255, 255, 255, .70);
+  --cn-t7: rgba(255, 255, 255, .94);
+  --cn-b1: rgba(23, 43, 59, .07);
+  --cn-b2: rgba(96, 120, 139, .06);
+  --cn-b3: rgba(255, 255, 255, .18);
+  --cn-line: rgba(255, 255, 255, .92);
+  --cn-bline: rgba(96, 120, 139, .32);
+  --cn-edge: rgba(23, 43, 59, .55);
+  --cn-fire: .5;
+}
+
+/* ---------- Dark theme ---------- */
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0F1E2A;
+  --ink: #EEF2F5;
+  --muted: #B9C9D6;
+  --btn: #B9C9D6;
+  --btn-ink: #172B3B;
+  --focus: #E2E7EB;
+
+  --glass: rgba(185, 201, 214, .09);
+  --glass-strong: rgba(185, 201, 214, .16);
+  --rim: rgba(255, 255, 255, .42);
+  --rim-low: rgba(255, 255, 255, .08);
+  --hair: rgba(185, 201, 214, .2);
+  --sheen: rgba(185, 201, 214, .16);
+  --shadow: rgba(0, 0, 0, .38);
+  --field: rgba(15, 30, 42, .45);
+  --field-line: rgba(185, 201, 214, .22);
+
+  --blob-1: #3B5A73;
+  --blob-2: #60788B;
+  --blob-3: #1E3A50;
+  --blob-opacity: .85;
+  --ray: .07;
+  --prism: .35;
+  --staff: rgba(185, 201, 214, .07);
+
+  --cn-t1: rgba(8, 20, 30, .34);
+  --cn-t2: rgba(8, 20, 30, .16);
+  --cn-t3: rgba(185, 201, 214, .06);
+  --cn-t4: rgba(185, 201, 214, .16);
+  --cn-t5: rgba(205, 222, 235, .30);
+  --cn-t6: rgba(220, 234, 245, .48);
+  --cn-t7: rgba(240, 248, 255, .72);
+  --cn-b1: rgba(0, 0, 0, .14);
+  --cn-b2: rgba(96, 120, 139, .10);
+  --cn-b3: rgba(185, 201, 214, .10);
+  --cn-line: rgba(225, 238, 248, .6);
+  --cn-bline: rgba(225, 238, 248, .22);
+  --cn-edge: rgba(225, 236, 245, .62);
+  --cn-fire: .36;
+}
+
+/* ---------- Fixed surfaces: the note always matches what's behind it ---------- */
+[data-surface="ivory"] {
+  --cn-t1: rgba(23, 43, 59, .30); --cn-t2: rgba(23, 43, 59, .16); --cn-t3: rgba(96, 120, 139, .10);
+  --cn-t4: rgba(255, 255, 255, .22); --cn-t5: rgba(255, 255, 255, .45); --cn-t6: rgba(255, 255, 255, .70); --cn-t7: rgba(255, 255, 255, .94);
+  --cn-b1: rgba(23, 43, 59, .07); --cn-b2: rgba(96, 120, 139, .06); --cn-b3: rgba(255, 255, 255, .18);
+  --cn-line: rgba(255, 255, 255, .92); --cn-bline: rgba(96, 120, 139, .32); --cn-edge: rgba(23, 43, 59, .55); --cn-fire: .5;
+  background: linear-gradient(160deg, #FCFAF6, #ECE6DC);
+}
+[data-surface="mist"] {
+  --cn-t1: rgba(23, 43, 59, .26); --cn-t2: rgba(23, 43, 59, .13); --cn-t3: rgba(96, 120, 139, .08);
+  --cn-t4: rgba(255, 255, 255, .14); --cn-t5: rgba(255, 255, 255, .30); --cn-t6: rgba(255, 255, 255, .50); --cn-t7: rgba(255, 255, 255, .78);
+  --cn-b1: rgba(23, 43, 59, .07); --cn-b2: rgba(96, 120, 139, .07); --cn-b3: rgba(255, 255, 255, .12);
+  --cn-line: rgba(255, 255, 255, .8); --cn-bline: rgba(23, 43, 59, .18); --cn-edge: rgba(23, 43, 59, .42); --cn-fire: .42;
+  background: linear-gradient(160deg, #D3E0EA, #A3B8C8);
+}
+[data-surface="navy"] {
+  --cn-t1: rgba(8, 20, 30, .34); --cn-t2: rgba(8, 20, 30, .16); --cn-t3: rgba(185, 201, 214, .06);
+  --cn-t4: rgba(185, 201, 214, .16); --cn-t5: rgba(205, 222, 235, .30); --cn-t6: rgba(220, 234, 245, .48); --cn-t7: rgba(240, 248, 255, .72);
+  --cn-b1: rgba(0, 0, 0, .14); --cn-b2: rgba(96, 120, 139, .10); --cn-b3: rgba(185, 201, 214, .10);
+  --cn-line: rgba(225, 238, 248, .6); --cn-bline: rgba(225, 238, 248, .22); --cn-edge: rgba(225, 236, 245, .62); --cn-fire: .36;
+  background: linear-gradient(160deg, #23405A, #0D1A25);
+}
+
+/* ---------- Crystal note: maps sprite classes to the tokens above ----------
+   These must be bare class selectors. Each <use> clones the sprite into its own shadow tree;
+   rules are matched against the sprite's elements, and var() then resolves from wherever
+   that <use> sits, which is what makes every copy take on its own surface's colors. */
+.crystal { overflow: visible; }
+.cnt1 { fill: var(--cn-t1); }
+.cnt2 { fill: var(--cn-t2); }
+.cnt3 { fill: var(--cn-t3); }
+.cnt4 { fill: var(--cn-t4); }
+.cnt5 { fill: var(--cn-t5); }
+.cnt6 { fill: var(--cn-t6); }
+.cnt7 { fill: var(--cn-t7); }
+.cnb1 { fill: var(--cn-b1); }
+.cnb2 { fill: var(--cn-b2); }
+.cnb3 { fill: var(--cn-b3); }
+.cnl  { stroke: var(--cn-line); stroke-width: .45; stroke-linejoin: round; }
+.cnbl { stroke: var(--cn-bline); stroke-width: .35; stroke-linejoin: round; }
+.cne  { fill: none; stroke: var(--cn-edge); stroke-width: 1; stroke-linejoin: round; }
+.cng  { stroke: #FFFFFF; stroke-width: .9; stroke-linecap: round; opacity: .85; }
+.cnp  { opacity: var(--cn-fire); }
+.cns  { fill: #FFFFFF; }
+#cn-note * { transition: fill .7s ease, stroke .7s ease, opacity .7s ease; }

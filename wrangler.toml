@@ -1,0 +1,15 @@
+# Cloudflare Pages config. With this file in the repo, Pages reads bindings from here
+# instead of the dashboard. Secrets still go in the dashboard (or `wrangler pages secret put`).
+name = "clearnote-sheets"
+pages_build_output_dir = "./public"
+compatibility_date = "2026-09-01"
+
+[vars]
+SITE_URL = "https://clearnotesheets.com"            # [YOUR DOMAIN]
+FROM_EMAIL = "ClearNote Sheets <hello@clearnotesheets.com>"   # must be on a domain verified in Resend
+NOTIFY_EMAIL = "you@example.com"                    # [WHERE NEW REQUESTS GO]
+
+# Private bucket for files people attach to requests
+[[r2_buckets]]
+binding = "UPLOADS"
+bucket_name = "clearnote-uploads"
