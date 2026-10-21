@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Store admin | ClearNote Sheets</title>
+<meta name="description" content="ClearNote Sheets store admin.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#172B3B">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ClearNote Sheets">
+<meta property="og:title" content="Store admin | ClearNote Sheets">
+<meta property="og:description" content="ClearNote Sheets store admin.">
+<meta property="og:image" content="https://clearnotesheets.com/og-image.jpg">
+<link rel="manifest" href="admin.webmanifest">
+<meta name="apple-mobile-web-app-title" content="CN Admin">
+
+<meta name="twitter:card" content="summary_large_image">
+<script>try{var t=localStorage.getItem('cn-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&amp;display=swap">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/glass.css">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/admin.css">
+<script type="module" src="js/admin.js"></script>
+</head>
+<body class="admin">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header admin-header">
+  <div class="admin-bar">
+    <a class="brand" href="./" aria-label="ClearNote Sheets store"><span class="brand__icon" aria-hidden="true"></span><span class="brand__text"><span class="brand__word">ClearNote Sheets</span><span class="brand__tag">Store admin</span></span></a>
+    <div class="header-actions">
+      <span class="admin-bar__user" data-user></span>
+      <a class="btn btn--quiet btn--sm admin-bar__store" href="./" target="_blank" rel="noopener">View store</a>
+      <button class="btn btn--glass btn--sm" type="button" data-signout hidden>Sign out</button>
+      <button class="icon-btn theme-btn" type="button" data-theme-toggle aria-label="Switch to dark mode"><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg></button>
+    </div>
+  </div>
+</header>
+<main id="main" class="admin-main">
+  <section class="admin-card glass" data-view="setup">
+    <h1>Connect Supabase to use the admin</h1>
+    <p data-setup-msg>Add your Supabase project URL and publishable key to <code>js/config.js</code>, then reload this page. The README walks through it step by step.</p>
+  </section>
+
+  <section class="admin-card glass" data-view="signin" hidden>
+    <h1>Sign in</h1>
+    <p>Use the admin account you set up in Supabase.</p>
+    <form data-signin novalidate>
+      <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="username" required></div>
+      <div class="field"><label for="password">Password</label><input id="password" name="password" type="password" autocomplete="current-password"></div>
+      <p class="form-msg" data-signin-msg role="alert"></p>
+      <button class="btn btn--solid btn--block" type="submit">Sign in</button>
+      <button class="btn btn--quiet btn--block" type="button" data-magic>Email me a sign-in link instead</button>
+    </form>
+  </section>
+
+  <section class="admin-card glass" data-view="denied" hidden>
+    <h1>This account isn’t an admin</h1>
+    <p><span data-denied-email></span> is signed in but isn’t on the admin list. Add it in Supabase (README, step 3), then sign in again.</p>
+    <p data-denied-detail></p>
+    <p style="margin-top:20px"><button class="btn btn--glass" type="button" data-signout>Sign out</button></p>
+  </section>
+
+  <section data-view="app" hidden>
+    <div class="admin-grid" data-grid>
+      <aside class="admin-list glass" aria-label="Sheets">
+        <div class="admin-list__head">
+          <h1 class="admin-list__title">Sheets <span data-total></span></h1>
+          <button class="btn btn--solid btn--sm" type="button" data-new>Add a sheet</button>
+        </div>
+        <label class="search__field admin-filter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg><span class="sr-only">Filter sheets</span><input class="search__input" type="search" placeholder="Filter by song or artist" data-filter></label>
+        <ul class="admin-items" data-list></ul>
+      </aside>
+
+      <section class="admin-editor glass" aria-labelledby="editor-title">
+        <div class="admin-editor__empty" data-editor-empty>
+          <h2>Pick a sheet to edit</h2>
+          <p>Or add a new one. The form walks you through it: the PDF goes into Payhip, everything else goes here.</p>
+          <button class="btn btn--solid" type="button" data-new>Add a sheet</button>
+        </div>
+
+        <form class="editor-form" data-form novalidate hidden>
+          <div class="editor-head">
+            <button class="btn btn--quiet btn--sm editor-back" type="button" data-back>All sheets</button>
+            <h2 id="editor-title" data-editor-title>Add a sheet</h2>
+            <a class="link" data-view-link target="_blank" rel="noopener" hidden>View in store</a>
+          </div>
+
+          <ol class="steps-guide" data-steps>
+            <li><span><strong>Add the PDF in Payhip.</strong> Upload it, set the price, then copy the product link from Share / Embed. <a href="https://payhip.com/products" target="_blank" rel="noopener">Open Payhip</a></span></li>
+            <li><span><strong>Paste that link below</strong> and fill in the song details.</span></li>
+            <li><span><strong>Add a cover and a preview</strong> straight from your photos.</span></li>
+            <li><span><strong>Tap Publish sheet.</strong> It’s in the store right away.</span></li>
+          </ol>
+
+          <section class="editor-section">
+            <h3>Payhip link</h3>
+            <div class="field">
+              <div class="field__row"><label for="f-payhip_link">Payhip product link</label><a class="link" data-payhip-open target="_blank" rel="noopener" hidden>Open in Payhip</a></div>
+              <input id="f-payhip_link" name="payhip_link" inputmode="url" autocomplete="off" placeholder="https://payhip.com/b/AbCd" aria-describedby="hint-payhip err-payhip_link">
+              <p class="field__hint" id="hint-payhip">It looks like payhip.com/b/AbCd. Keep the price below the same as in Payhip.</p>
+              <p class="field__error" id="err-payhip_link" data-error-for="payhip_link"></p>
+            </div>
+          </section>
+
+          <section class="editor-section">
+            <h3>Song</h3>
+            <div class="fields fields--3">
+              <div class="field"><label for="f-title">Song title</label><input id="f-title" name="title" autocomplete="off" aria-describedby="err-title" required><p class="field__error" id="err-title" data-error-for="title"></p></div>
+              <div class="field"><label for="f-artist">Artist</label><input id="f-artist" name="artist" autocomplete="off" aria-describedby="err-artist" list="dl-artists" required><p class="field__error" id="err-artist" data-error-for="artist"></p></div>
+              <div class="field"><label for="f-album">Album (optional)</label><input id="f-album" name="album" autocomplete="off" aria-describedby="err-album" list="dl-albums"><p class="field__error" id="err-album" data-error-for="album"></p></div>
+            </div>
+          </section>
+
+          <section class="editor-section">
+            <h3>Sheet details</h3>
+            <div class="fields fields--3">
+              <div class="field"><label for="f-price">Price (USD)</label><input id="f-price" name="price" autocomplete="off" aria-describedby="err-price" inputmode="decimal" placeholder="6.99" required><p class="field__error" id="err-price" data-error-for="price"></p></div>
+              <div class="field"><label for="f-musical_key">Key</label><input id="f-musical_key" name="musical_key" autocomplete="off" aria-describedby="err-musical_key" list="dl-keys" placeholder="G minor"><p class="field__error" id="err-musical_key" data-error-for="musical_key"></p></div>
+              <div class="field"><label for="f-bpm">BPM</label><input id="f-bpm" name="bpm" autocomplete="off" aria-describedby="err-bpm" inputmode="numeric" placeholder="96"><p class="field__error" id="err-bpm" data-error-for="bpm"></p></div>
+              <div class="field"><label for="f-time_signature">Time signature</label><input id="f-time_signature" name="time_signature" autocomplete="off" aria-describedby="err-time_signature" list="dl-times" placeholder="4/4"><p class="field__error" id="err-time_signature" data-error-for="time_signature"></p></div>
+              <div class="field"><label for="f-release_date">Song’s release date</label><input id="f-release_date" name="release_date" autocomplete="off" aria-describedby="err-release_date hint-release_date" type="date"><p class="field__hint" id="hint-release_date">Shows how fast the sheet came out.</p><p class="field__error" id="err-release_date" data-error-for="release_date"></p></div>
+            </div>
+          </section>
+
+
+          <section class="editor-section">
+            <h3>Images</h3>
+            <div class="fields fields--2">
+              <div class="imgfield" data-img="cover">
+            <div class="imgfield__preview" data-img-preview><span>No cover yet</span></div>
+            <div class="imgfield__controls">
+              <span class="field__label">Cover artwork</span>
+              <label class="btn btn--glass btn--sm"><input class="sr-only" type="file" accept="image/*" data-img-input>Choose image</label>
+              <button class="btn btn--quiet btn--sm" type="button" data-img-remove hidden>Remove</button>
+              <p class="field__hint">Square works best. Large photos are resized automatically.</p>
+            </div>
+          </div>
+              <div class="imgfield" data-img="preview">
+            <div class="imgfield__preview" data-img-preview><span>No preview yet</span></div>
+            <div class="imgfield__controls">
+              <span class="field__label">Sheet preview</span>
+              <label class="btn btn--glass btn--sm"><input class="sr-only" type="file" accept="image/*" data-img-input>Choose image</label>
+              <button class="btn btn--quiet btn--sm" type="button" data-img-remove hidden>Remove</button>
+              <p class="field__hint">A watermarked or partial first page. Resized automatically.</p>
+            </div>
+          </div>
+            </div>
+          </section>
+
+          <section class="editor-section">
+            <h3>Visibility</h3>
+            <div class="switches">
+              <label class="switch"><input type="checkbox" name="is_new_release"><span class="switch__track" aria-hidden="true"></span><span class="switch__text"><strong>New release</strong><span>Listed under New releases on the home page</span></span></label>
+              <label class="switch"><input type="checkbox" name="published"><span class="switch__track" aria-hidden="true"></span><span class="switch__text"><strong>Published</strong><span>Visible in the store. Turn off to keep it as a draft.</span></span></label>
+            </div>
+          </section>
+
+          <p class="form-msg" data-form-msg role="alert"></p>
+          <div class="editor-actions">
+            <button class="btn btn--solid" type="submit" data-save>Publish sheet</button>
+            <button class="btn btn--quiet btn--danger" type="button" data-delete hidden>Delete sheet</button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </section>
+</main>
+<datalist id="dl-artists"></datalist>
+<datalist id="dl-albums"></datalist>
+<datalist id="dl-keys"><option value="C major"><option value="C minor"><option value="C♯ minor"><option value="D♭ major"><option value="D major"><option value="D minor"><option value="E♭ major"><option value="E♭ minor"><option value="E major"><option value="E minor"><option value="F major"><option value="F minor"><option value="F♯ major"><option value="F♯ minor"><option value="G major"><option value="G minor"><option value="A♭ major"><option value="G♯ minor"><option value="A major"><option value="A minor"><option value="B♭ major"><option value="B♭ minor"><option value="B major"><option value="B minor"></datalist>
+<datalist id="dl-times"><option value="4/4"><option value="3/4"><option value="2/4"><option value="6/8"><option value="12/8"><option value="9/8"><option value="2/2"><option value="5/4"><option value="7/8"></datalist>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js"></script>
+</body>
+</html>
